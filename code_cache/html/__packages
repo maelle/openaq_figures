@@ -1,12 +1,7 @@
 base
-methods
-datasets
-utils
-grDevices
-graphics
-stats
 knitr
 Ropenaq
 dplyr
 tidyr
 ggplot2
+scales
