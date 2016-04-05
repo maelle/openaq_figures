@@ -89,3 +89,38 @@ locs %>% group_by(location) %>%
   xlab("No. of parameters monitored per station") +
   ylab("Count") +
   ggtitle("Variety of locations")
+
+
+#' combinations?
+locs %>% group_by(location) %>%
+  summarize(noOfPar = o3 + pm25 + pm10 + so2 + no2 + co + bc) %>%
+  ungroup() %>% left_join(locs) %>%
+  gather(parameter, present, o3:bc) %>%
+  filter(present == TRUE) %>% 
+  group_by(location) %>%
+  summarize(parameters = toString(parameter)) %>%
+  select(parameters)  %>%
+  group_by(parameters) %>%
+  summarize(count = n()) %>%
+  mutate(parameters = ordered(parameters,
+                              levels = parameters[order(-count)])) %>%
+  arrange(count) %>%
+  ggplot() +
+  geom_bar(aes(x = parameters, y = count),
+           fill = orange,
+           stat = "identity")+ 
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+locs %>% group_by(location) %>%
+  summarize(noOfPar = o3 + pm25 + pm10 + so2 + no2 + co + bc) %>%
+  ungroup() %>% left_join(locs) %>%
+  gather(parameter, present, o3:bc) %>%
+  filter(present == TRUE) %>% 
+  group_by(location) %>%
+  summarize(parameters = toString(parameter)) %>%
+  select(parameters)  %>%
+  group_by(parameters) %>%
+  summarize(count = n()) %>%
+  mutate(parameters = ordered(parameters,
+                              levels = parameters[order(-count)])) %>%
+  arrange(-count) %>% knitr::kable()
