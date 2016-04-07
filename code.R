@@ -123,4 +123,4 @@ locs %>% group_by(location) %>%
   summarize(count = n()) %>%
   mutate(parameters = ordered(parameters,
                               levels = parameters[order(-count)])) %>%
-  arrange(-count) %>% knitr::kable()
+  arrange(-count) %>% readr::write_csv("combination.csv")
