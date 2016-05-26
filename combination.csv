@@ -1,69 +1,68 @@
 parameters,count
-o3,669
+o3,695
 pm25,296
-"o3, pm25",278
-pm10,75
-"o3, no2",74
-"o3, pm10, so2, no2, co",67
-"pm25, pm10",66
-"o3, pm25, pm10, so2, no2, co",64
-so2,60
-"o3, pm25, pm10",58
-"o3, pm10",47
-"o3, pm10, no2",45
-no2,43
-"o3, pm25, no2",43
-"o3, pm25, pm10, no2",40
-"o3, pm10, so2, no2",35
-"pm25, pm10, no2",31
-"o3, pm25, pm10, so2, no2",29
-"o3, pm25, so2, no2, co",23
-"o3, pm25, so2, no2",21
-"o3, pm25, so2",20
-"no2, co",18
-"o3, pm25, pm10, no2, co",18
-"o3, so2",18
-"pm25, so2",18
-"o3, so2, no2",17
-"pm10, no2",16
-co,13
-"o3, pm25, no2, co",13
-"o3, pm25, so2, co",13
-"o3, no2, co",12
-"o3, pm10, no2, co",11
-"o3, pm25, pm10, so2, co",11
-"o3, so2, no2, co",10
-"pm25, no2, co",10
-"pm25, pm10, so2, no2, co",9
+"pm25, o3",282
+"no2, o3",77
+"pm10, no2, so2, o3, co",77
+pm10,74
+"pm25, pm10",71
+"pm25, pm10, no2, so2, o3, co",66
+"pm25, pm10, o3",59
+so2,59
+"pm10, o3",47
+"pm10, no2, o3",46
+"pm25, no2, o3",43
+"pm25, pm10, no2, o3",42
+no2,41
+"pm10, no2, so2, o3",39
+"pm25, pm10, no2",32
+"pm25, pm10, no2, so2, o3",30
+"pm25, no2, so2, o3, co",22
+"pm25, no2, so2, o3",21
+"no2, co",20
+"pm25, so2, o3",20
+"pm25, pm10, no2, o3, co",19
+"pm25, so2",19
+"pm10, no2",18
+"so2, o3",18
+"no2, so2, o3",17
+co,15
+"pm25, no2, o3, co",14
+"no2, o3, co",13
+"pm10, no2, o3, co",13
+"pm25, pm10, so2, o3, co",13
+"pm25, so2, o3, co",13
+"pm25, no2, co",12
+"no2, so2, o3, co",11
+"pm25, pm10, no2, so2, co",9
 "o3, co",8
-"o3, pm10, so2",7
-"o3, pm10, so2, co",7
-"pm25, no2",7
-"pm10, co",6
-"pm10, no2, co",6
-"pm10, so2, no2",6
+"pm10, co",7
+"pm10, no2, co",7
+"pm10, no2, so2",7
+"pm10, so2, o3",7
+"pm10, so2, o3, co",7
+"pm25, no2",6
 "pm25, pm10, no2, co",6
-"pm25, pm10, so2, no2",6
-"o3, pm10, co",5
+"pm25, pm10, no2, so2",6
+"no2, so2",5
+"pm10, no2, so2, co",5
+"pm10, o3, co",5
 "pm10, so2",5
-"o3, pm25, co",4
-"o3, pm25, pm10, co",4
-"o3, pm25, pm10, so2",4
-"pm10, so2, no2, co",4
-"pm25, co",4
+"pm25, pm10, so2",5
+"pm25, pm10, o3, co",4
+"pm25, pm10, so2, o3",4
 "so2, co",4
-"so2, no2",4
+"so2, o3, co",4
+"pm25, co",3
+"pm25, o3, co",3
 "pm25, pm10, co",3
-"pm25, pm10, so2",3
-"so2, no2, co",3
-"o3, pm25, so2, no2, co, bc",2
-"o3, so2, co",2
+"no2, so2, co",2
 "pm25, bc",2
 "pm25, no2, co, bc",2
+"pm25, no2, so2",2
+"pm25, no2, so2, co",2
+"pm25, no2, so2, o3, co, bc",2
 "pm25, pm10, so2, co",2
-"pm25, so2, no2",2
-"pm25, so2, no2, co",2
-"o3, pm25, pm10, so2, no2, bc",1
-"o3, pm25, pm10, so2, no2, co, bc",1
-"o3, so2, no2, bc",1
-"pm10, so2, co",1
+"no2, so2, o3, bc",1
+"pm25, pm10, no2, so2, o3, bc",1
+"pm25, pm10, no2, so2, o3, co, bc",1

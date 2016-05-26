@@ -1,6 +1,6 @@
 library("dplyr")
 library("ggplot2")
-library("Ropenaq")
+library("ropenaq")
 library("scales")
 
 blue <- "#55828B"
@@ -13,7 +13,7 @@ locs <- NULL
 for (page in 1:3){
   locs <- rbind(locs,
                 aq_locations(limit = 1000,
-                             page = page))
+                             page = page)$results)
 }
 
 # prepare data with cumsum of no. of locations
