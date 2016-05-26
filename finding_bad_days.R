@@ -2,6 +2,7 @@ library("dplyr")
 library("ggplot2")
 library("ropenaq")
 library("scales")
+library("viridis")
 
 blue <- "#55828B"
 orange <- "#C75233"
@@ -42,21 +43,26 @@ ggsave(file = "figures/transitions.png", height = 6, width = 12)
 
 # now compare to last count if it wasn't already an outlier, so iteratively
 # I cannot use lead/lag things because the last count could be an outlier
-for(limit in seq(0.1, 1, by = 0.1)){
-  dailyData <- dailyData %>% mutate(toolow = FALSE)
+dailyData <- dailyData %>% mutate(status = "alright")
   
-  for (i in 2:nrow(dailyData)){
-    comparisonPoint <- max(which(dailyData[1:(i-1), "toolow"] == FALSE))
-    if (dailyData$count[i] < limit*dailyData$count[comparisonPoint]){
-      dailyData$toolow[i] <- TRUE
-    }
+for (i in 2:nrow(dailyData)){
+  comparisonPoint <- max(which(dailyData[1:(i-1), "status"] == "alright"))
+  if (dailyData$count[i] < 0.9*dailyData$count[comparisonPoint]){
+    dailyData$status[i] <- "issue"
   }
-  
-  dailyData %>% ggplot() +
-    geom_point(aes(x = date, y = count,
-                   col = toolow),
-               size = 2) +
-    scale_colour_manual(values = c(blue, orange))
-  ggsave(file = paste0("figures/toolow",limit,".png"), height = 6, width = 12)
+  if (dailyData$count[i] < 0.1*dailyData$count[comparisonPoint]){
+    dailyData$status[i] <- "outage"
+  }
 }
+  
+
+
+dailyData %>% ggplot() +
+    geom_point(aes(x = date, y = count,
+                   col = status),
+               size = 2) +
+    scale_colour_manual(values = c(blue, orange))+
+  scale_color_viridis(discrete=TRUE)
+  ggsave(file = "figures/status.png", height = 6, width = 12)
+
 
