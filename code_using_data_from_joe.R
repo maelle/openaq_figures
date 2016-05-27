@@ -28,7 +28,8 @@ sumLoc <- locs[,c("firstUpdated")] %>% group_by(firstUpdated) %>%
 dailyData <- readr::read_csv("data/openaq_daily_numbers.csv") %>%
   mutate(cumsum = cumsum(count), 
          type = "measurements") %>%
-  select(date, cumsum, type)
+  select(date, cumsum, type) %>%
+  mutate(date = as.Date(date))
 
 # data for plot
 dataPlot <- bind_rows(sumLoc, dailyData)
