@@ -29,17 +29,17 @@ for(i in 1:nrow(dailyData)){
     dailyData$noNew[i] <- sum(as.Date(locs$firstUpdated) == dailyData$addDay[i])
   }
 }
-  
-# graph with transitions as vertical lines
-dailyData %>% ggplot() +
-  geom_point(aes(x = date, y = count),
-             size = 2,
-             col = blue) +
-  geom_vline(aes(xintercept = as.numeric(addDay),
-                 alpha = log(noNew)),
-             size = 1,
-             col = orange)
-ggsave(file = "figures/transitions.png", height = 6, width = 12)
+#   
+# # graph with transitions as vertical lines
+# dailyData %>% ggplot() +
+#   geom_point(aes(x = date, y = count),
+#              size = 2,
+#              col = blue) +
+#   geom_vline(aes(xintercept = as.numeric(addDay),
+#                  alpha = log(noNew)),
+#              size = 1,
+#              col = orange)
+# ggsave(file = "figures/transitions.png", height = 6, width = 12)
 
 # now compare to last count if it wasn't already an outlier, so iteratively
 # I cannot use lead/lag things because the last count could be an outlier
@@ -57,11 +57,10 @@ for (i in 2:nrow(dailyData)){
   
 
 
-dailyData %>% ggplot() +
+dailyData[1: (nrow(dailyData) - 1),] %>% ggplot() +
     geom_point(aes(x = date, y = count,
                    col = status),
                size = 2) +
-    scale_colour_manual(values = c(blue, orange))+
   scale_color_viridis(discrete=TRUE)
   ggsave(file = "figures/status.png", height = 6, width = 12)
 
