@@ -43,10 +43,10 @@ for(i in 1:nrow(dailyData)){
 
 # now compare to last count if it wasn't already an outlier, so iteratively
 # I cannot use lead/lag things because the last count could be an outlier
-dailyData <- dailyData %>% mutate(status = "alright")
+dailyData <- dailyData %>% mutate(status = "normal")
   
 for (i in 2:nrow(dailyData)){
-  comparisonPoint <- max(which(dailyData[1:(i-1), "status"] == "alright"))
+  comparisonPoint <- max(which(dailyData[1:(i-1), "status"] == "normal"))
   if (dailyData$count[i] < 0.9*dailyData$count[comparisonPoint]){
     dailyData$status[i] <- "issue"
   }
@@ -56,6 +56,9 @@ for (i in 2:nrow(dailyData)){
 }
   
 
+dailyData <- mutate(dailyData,
+                    status = factor(status, ordered = TRUE,
+                                    levels = c("normal", "issue", "outage")))
 
 dailyData[1: (nrow(dailyData) - 1),] %>% ggplot() +
     geom_point(aes(x = date, y = count,
