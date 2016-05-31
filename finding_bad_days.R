@@ -64,7 +64,12 @@ dailyData[1: (nrow(dailyData) - 1),] %>% ggplot() +
     geom_point(aes(x = date, y = count,
                    col = status),
                size = 2) +
-  scale_color_viridis(discrete=TRUE)
+  scale_color_viridis(discrete=TRUE) +
+  scale_x_datetime(breaks = date_breaks("1 month"),
+                   labels = date_format("%m/%Y"))+
+  xlab("Time") +
+  ylab("Daily count of new measurements") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
   ggsave(file = "figures/status.png", height = 6, width = 12)
 
 
